@@ -1,0 +1,23 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <div class="auth-box">
+            <form>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Nazwa użytkownika</label>
+                <input type="text" class="main-input" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Hasło</label>
+                <input type="password" class="main-input" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="main-btn">Zaloguj się</button>
+            </form>
+        </div>
+    </main>
+<%- include('includes/end.ejs') %>

@@ -1,0 +1,32 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="../stylesheets/forms.css">
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <h1 class="main-title">Dodaj cenę paliwa</h1>
+        <div class="forms-add-price">
+            <form>
+                <div class="form-group">
+                <label for="station">Stacja paliw</label>
+                <input class="main-input" type="text" id="station">
+                </div>
+                <div class="form-group">
+                <label for="station">Rodzaj paliwa</label>
+                <select class="main-input">
+                    <option>PB95</option>
+                    <option>PB98</option>
+                    <option>ON</option>
+                    <option>LPG</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <label for="station">Cena</label>
+                    <input class="main-input" type="number">
+                    </div>
+              </form>
+        </div>
+    </main>
+<%- include('includes/end.ejs') %>

@@ -1,0 +1,58 @@
+body {
+    font-family: 'Archivo', sans-serif;
+}
+
+.nav-bg {
+    background-color: #1a1818;
+}
+
+.nav-text {
+    color: white;
+}
+
+.nav-logo {
+    height: 60px;
+    margin-right: 30px;
+}
+
+.main-btn {
+    font-family: 'Archivo', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: black;
+    border: 0px;
+    transition: background-color 0.2s;
+}
+
+.main-btn:hover {
+    background-color: #007900;
+}
+
+.main-input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #a09d9d;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+
+.main-input:focus {
+    box-shadow: 0 0 6px #007900;
+    border: 2px solid #007900;
+    outline: none;
+}
+
+.main-title {
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #007900;
+    font-weight: bold;
+}
