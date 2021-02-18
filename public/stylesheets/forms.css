@@ -6,3 +6,12 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.forms-add-station {
+    width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}

@@ -6,10 +6,13 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const pricesRouter = require('./routes/prices');
+const stationsRouter = require('./routes/stations');
 
 const User = require('./models/user');
 const Station = require('./models/station');
 const Price = require('./models/price');
+const errorController = require('./controllers/error');
 
 
 const sequelize = require('./utils/database');
@@ -42,23 +45,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(stationsRouter)
+app.use(pricesRouter)
 app.use('/user', usersRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+app.use(errorController.get404);
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.send(err);
-  console.log(err);
-});
 
 
