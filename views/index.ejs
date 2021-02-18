@@ -1,11 +1,24 @@
 <%- include('includes/head.ejs') %>
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
 <body>
     <%- include('includes/navbar.ejs') %>
 
     <main>
-        <h1>Strona główna</h1>
+        <h1 class="last-title">Ostatnio dodane</h1>
+        <div class="prices-container">
+            <div class="price-item">
+                <p class="type-tag">PB95</p>
+                <div class="price-value">4,69zł/l</div>
+                <div class="station-name">ORLEN</div>
+                <div class="station-adress">ul. Przykładowa 1, 59-300 Lubin</div>
+                <button class="price-btn">Zaktualizuj cenę</button>
+                <button class="price-btn">Zgłoś nieprawidłowość</button>
+            </div>
+
+            
+        </div>
     </main>
 <%- include('includes/end.ejs') %>

@@ -28,12 +28,18 @@ exports.postAddPrice = (req, res, next) => {
         postalCode: postalcode 
     }})
     .then(result => {
-        station = result;
-        return Price.create({
+        if(result === null) {
+            res.redirect("/add-price");
+        }
+        else {
+            station = result;
+            return Price.create({
             fuelType: fuelType,
             value: price,
             date: date
         });
+        }
+        
     })
     .then(result => {
         newPrice = result;
