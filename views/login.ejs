@@ -7,14 +7,14 @@
 
     <main>
         <div class="auth-box">
-            <form>
+            <form action="/user/login" method="POST">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Nazwa użytkownika</label>
-                <input type="text" class="main-input" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="login">Nazwa użytkownika</label>
+                <input type="text" class="main-input" name="login" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Hasło</label>
-                <input type="password" class="main-input" id="exampleInputPassword1">
+                <label for="password">Hasło</label>
+                <input type="password" class="main-input" name="password">
                 </div>
                 <button type="submit" class="main-btn">Zaloguj się</button>
             </form>

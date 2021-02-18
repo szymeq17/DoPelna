@@ -4,7 +4,8 @@ const Station = require('../models/station');
 exports.getAddPrice = (req, res, next) => {
     res.render('add-price', {
         pageTitle: "Dodaj cenę paliwa",
-        path: "/add-price"
+        path: "/add-price",
+        loggedin: req.session.isLoggedIn
     });
 }
 
@@ -18,6 +19,7 @@ exports.postAddPrice = (req, res, next) => {
     const date = req.body.date;
 
     let station;
+    let newPrice;
 
     Station.findOne({where: {
         name: name,
@@ -33,8 +35,13 @@ exports.postAddPrice = (req, res, next) => {
             date: date
         });
     })
-    .then(newPrice => {
+    .then(result => {
+        newPrice = result;
         return station.addPrice(newPrice);
+    })
+    .then(() => {
+        let user = req.user;
+        return user.addPrice(newPrice);
     })
     .then(() => {
         res.redirect('/add-price');

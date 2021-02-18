@@ -4,7 +4,8 @@ const { Op } = require("sequelize");
 exports.getAddStation = (req, res, next) => {
     res.render('add-station', {
         pageTitle: "Dodaj nową stację",
-        path: "/add-station"
+        path: "/add-station",
+        loggedin: req.session.isLoggedIn
     });
 }
 
@@ -51,5 +52,5 @@ exports.postAddStation = (req, res, next) => {
 }
 
 exports.findStations = (req, res, next, keyword) => {
-    res.json("dupa");
+    res.json("a");
 }

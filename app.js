@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
+var SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -16,12 +18,21 @@ const errorController = require('./controllers/error');
 
 
 const sequelize = require('./utils/database');
+// const { Sequelize } = require('sequelize/types');
 User.hasMany(Price);
 Station.hasMany(Price);
 
 
 
 const app = express();
+
+app.use(session({
+  secret: "secret",
+  store: new SequelizeStore({
+    db: sequelize
+  }),
+  resave: false
+}));
 
 sequelize.sync()
   .then(result => {
@@ -43,6 +54,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  if(req.session.user) {
+    User.findOne({where: {id: req.session.user.id}})
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+  else {
+    next();
+  }
+});
 
 app.use('/', indexRouter);
 app.use(stationsRouter)

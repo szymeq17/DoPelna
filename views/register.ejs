@@ -7,18 +7,18 @@
 
     <main>
         <div class="auth-box">
-            <form>
+            <form action="/user/register" method="POST">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Nazwa użytkownika</label>
-                <input type="text" class="main-input" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="login">Nazwa użytkownika</label>
+                <input type="text" class="main-input" name="login" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                <label for="exampleInputPassword1">Hasło</label>
-                <input type="password" class="main-input" id="exampleInputPassword1">
+                <label for="password1">Hasło</label>
+                <input type="password" class="main-input" name="password1">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Powtórz hasło</label>
-                    <input type="password" class="main-input" id="exampleInputPassword2">
+                    <label for="password2">Powtórz hasło</label>
+                    <input type="password" class="main-input" name="password2">
                     </div>
                 <button type="submit" class="main-btn">Zarejestruj się</button>
             </form>

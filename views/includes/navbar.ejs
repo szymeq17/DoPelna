@@ -17,12 +17,24 @@
         </li>
       </ul>
       <ul class="navbar-nav  mb-2 mb-lg-0">
-        <li class="d-flex nav-item">
-          <a class="nav-link <%= path === '/user/register' ? 'active' : '' %>" href="/user/register">Rejestracja</a>
+        <% if (loggedin) { %>
+          <li class="navbar-nav  mb-2 mb-lg-0">
+            <a class="nav-link <%= path === '/user/logout' ? 'active' : '' %>" href="/user/logout">Wyloguj</a>
+          </li>
+        <%} else { %>  
+        <li class="navbar-nav  mb-2 mb-lg-0">
+          <a class="nav-link <%= path === '/user/register' ? 'active' : '' %>" href="/user/register">Zrejestruj się</a>
         </li>
+        <% } %>
+        <% if (loggedin) { %>
+          <li class="navbar-nav  mb-2 mb-lg-0">
+            <a class="nav-link <%= path === '/user/my-profile' ? 'active' : '' %>" href="/user/my-profile">Moje konto</a>
+          </li>
+        <%} else { %>  
         <li class="navbar-nav  mb-2 mb-lg-0">
           <a class="nav-link <%= path === '/user/login' ? 'active' : '' %>" href="/user/login">Zaloguj się</a>
         </li>
+        <% } %>
       </ul>
     </div>
   </div>
