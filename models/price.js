@@ -14,8 +14,8 @@ const Price = sequelize.define('price', {
         type: Sequelize.ENUM,
         values: ['PB95', 'PB98', 'ON', 'LPG']
     },
-    date: Sequelize.DATE,
-    value: Sequelize.DOUBLE
+    date: Sequelize.DATEONLY,
+    value: Sequelize.FLOAT
 });
 
 module.exports = Price;

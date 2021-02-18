@@ -7,15 +7,21 @@
 
     <main>
         <h1 class="main-title">Dodaj cenę paliwa</h1>
-        <div class="forms-add-price">
-            <form>
+        <div class="forms-add-price ui-widget">
+            <form action="/add-price" method="POST">
                 <div class="form-group">
-                <label for="station">Stacja paliw</label>
-                <input class="main-input" type="text" id="station">
+                <label for="station">Nazwa stacji paliw</label>
+                <input class="main-input" type="text" id="station" name="name">
+                <label for="street">Ulica</label>
+                <input class="main-input" type="text" id="street" name="street">
+                <label for="city">Miasto</label>
+                <input class="main-input" type="text" id="city" name="city">
+                <label for="postal">Kod pocztowy</label>
+                <input class="main-input" type="text" id="postal" name="postalcode">
                 </div>
                 <div class="form-group">
                 <label for="station">Rodzaj paliwa</label>
-                <select class="main-input">
+                <select class="main-input" name="type">
                     <option>PB95</option>
                     <option>PB98</option>
                     <option>ON</option>
@@ -23,13 +29,16 @@
                 </select>
                 </div>
                 <div class="form-group">
+                    <label for="station">Data</label>
+                    <input class="main-input" type="date" name="date">
                     <label for="station">Cena</label>
-                    <input class="main-input" type="text">
+                    <input class="main-input" type="text" name="price">
                 </div>
-                <button class="main-btn">
+                <button class="main-btn" type="submit">
                     Dodaj
                 </button>
               </form>
         </div>
     </main>
+    <script src="../javascripts/add-price.js"></script>
 <%- include('includes/end.ejs') %>

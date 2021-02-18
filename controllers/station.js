@@ -3,11 +3,12 @@ const { Op } = require("sequelize");
 
 exports.getAddStation = (req, res, next) => {
     res.render('add-station', {
-        pageTitle: "Dodaj nową stację"
+        pageTitle: "Dodaj nową stację",
+        path: "/add-station"
     });
 }
 
-exports.postAddStation = (req, res, net) => {
+exports.postAddStation = (req, res, next) => {
     const name = req.body.name;
     const street = req.body.street;
     const city = req.body.city;
@@ -46,10 +47,9 @@ exports.postAddStation = (req, res, net) => {
     })
     .catch(err => {
         console.log(err);
-    })
-        
+    }) 
+}
 
-    
-
-    
+exports.findStations = (req, res, next, keyword) => {
+    res.json("dupa");
 }

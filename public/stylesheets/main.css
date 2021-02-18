@@ -39,7 +39,7 @@ body {
     height: 40px;
     border-radius: 3px;
     border: 1px solid #a09d9d;
-    transition: box-shadow 0.2s, border 0.2s;
+    transition: box-shadow 0.4s, border 0.4s;
 }
 
 .main-input:focus {
