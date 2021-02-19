@@ -12,6 +12,10 @@ const User = sequelize.define('user', {
     },
     nickname: Sequelize.STRING,
     password: Sequelize.STRING,
+    points: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
 });
 
 module.exports = User;

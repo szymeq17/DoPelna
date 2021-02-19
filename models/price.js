@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Model, SequelizeScopeError } = require('sequelize');
 const Sequelize = require('sequelize');
 
 const sequelize = require('../utils/database');
@@ -15,7 +15,12 @@ const Price = sequelize.define('price', {
         values: ['PB95', 'PB98', 'ON', 'LPG']
     },
     date: Sequelize.DATEONLY,
-    value: Sequelize.FLOAT
+    value: Sequelize.FLOAT,
+    stationName: Sequelize.STRING,
+    stationPostalCode: Sequelize.STRING,
+    stationCity: Sequelize.STRING,
+    stationStreet: Sequelize.STRING,
+    stationUser: Sequelize.STRING
 });
 
 module.exports = Price;

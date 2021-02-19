@@ -33,7 +33,7 @@
 .station-name {
     margin-top: 10px;
     height: 40px;
-    background-color: #36A536;
+    background-color: #007900;
     border-radius: 15px;
     text-align: center;
     color: white;
@@ -44,10 +44,10 @@
 .station-adress {
     margin-top: 10px;
     height: 40px;
-    background-color: #62BA62;
+    background-color: #007900;
     border-radius: 15px;
     text-align: center;
-    color: black;
+    color: white;
     font-size: 15px;
     font-weight: bold;
     vertical-align: middle;
@@ -62,4 +62,31 @@
     border-radius: 10px;
     margin-top: 10px;
     border: 0px;
+    font-weight: bold;
 }
+
+.user-info {
+    height: 20px;
+    width: 48%;
+    background-color: gray;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.time-info {
+    float: right;
+    height: 20px;
+    width: 48%;
+    background-color: gray;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+
+}
+

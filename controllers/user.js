@@ -34,6 +34,9 @@ exports.postLogin = (req, res, next) => {
             res.redirect("/user/login")
         }
     })
+    .catch(err => {
+        console.log(err);
+    });
 }
 
 exports.postRegister = (req, res, next) => {
@@ -49,8 +52,9 @@ exports.postRegister = (req, res, next) => {
             if(password1 === password2) {
                 let user = new User({
                     nickname: login,
-                    password: password1
-                })
+                    password: password1,
+                    points: 0
+                });
 
                 user.save()
                 .then(() => {
@@ -71,10 +75,31 @@ exports.postRegister = (req, res, next) => {
             console.log("\u001B[31mIstieje już użytkownik o tej nazwie\u001B[0m");
         }
     })
+    .catch(err => {
+        console.log(err);
+    });
 }
 
 exports.getLogout = (req, res, next) => {
     req.user = null;
     req.session.isLoggedIn = false;
     res.redirect("/");
+}
+
+exports.getMyProfile = (req, res, next) => {
+    user = req.user;
+    user.getPrices()
+    .then(prices => {
+        res.render('my-profile', {
+            pageTitle: "Mój profil",
+            path: "/user/my-profile",
+            loggedin: req.session.isLoggedIn,
+            prices: prices,
+            user: user.nickname,
+            points: user.points
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }

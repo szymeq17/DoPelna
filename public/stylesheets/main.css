@@ -56,3 +56,42 @@ body {
     color: #007900;
     font-weight: bold;
 }
+
+.history tr td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.history {
+    margin: 10px;
+}
+
+.username-box {
+    width: 200px;
+    height: 60px;
+    background-color: #007900;
+    margin: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    line-height: 60px;
+}
+
+.history-title {
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.user-points {
+    width: 200px;
+    height: 30px;
+    background-color: #FF6F00;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+}

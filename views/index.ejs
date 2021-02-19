@@ -7,18 +7,24 @@
     <%- include('includes/navbar.ejs') %>
 
     <main>
-        <h1 class="last-title">Ostatnio dodane</h1>
-        <div class="prices-container">
-            <div class="price-item">
-                <p class="type-tag">PB95</p>
-                <div class="price-value">4,69zł/l</div>
-                <div class="station-name">ORLEN</div>
-                <div class="station-adress">ul. Przykładowa 1, 59-300 Lubin</div>
-                <button class="price-btn">Zaktualizuj cenę</button>
-                <button class="price-btn">Zgłoś nieprawidłowość</button>
-            </div>
+        <% if (recent.length > 0) { %>
+            <h1 class="last-title">Ostatnio dodane</h1>
+            <div class="prices-container">
+            <% for (let entry of recent) {%>
+                <div class="price-item">
+                    <p class="type-tag"><%= entry.dataValues.fuelType %></p>
+                    <div class="price-value"><%= entry.dataValues.value %></div>
+                    <div class="station-name"><%= entry.dataValues.stationName %></div>
+                    <div class="station-adress"><%= entry.dataValues.stationStreet + ", " + entry.dataValues.stationPostalCode + " " + entry.dataValues.stationCity %></div>
+                    <div class="user-info"><%= entry.dataValues.stationUser %></div>
+                    <div class="time-info"><%= entry.dataValues.date %></div>
+                    <button class="price-btn">Zaktualizuj cenę</button>
+                    <button class="price-btn">Zgłoś nieprawidłowość</button>  
+                </div>
+            <% } %>
 
-            
-        </div>
+                
+            </div>
+        <% } %>
     </main>
 <%- include('includes/end.ejs') %>

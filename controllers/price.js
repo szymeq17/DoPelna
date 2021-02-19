@@ -17,6 +17,7 @@ exports.postAddPrice = (req, res, next) => {
     const fuelType = req.body.type;
     const price = parseFloat(req.body.price);
     const date = req.body.date;
+    const username = req.user.nickname;
 
     let station;
     let newPrice;
@@ -36,7 +37,12 @@ exports.postAddPrice = (req, res, next) => {
             return Price.create({
             fuelType: fuelType,
             value: price,
-            date: date
+            date: date,
+            stationName: name,
+            stationPostalCode: postalcode,
+            stationCity: city,
+            stationStreet: street,
+            stationUser: username
         });
         }
         
@@ -48,6 +54,9 @@ exports.postAddPrice = (req, res, next) => {
     .then(() => {
         let user = req.user;
         return user.addPrice(newPrice);
+    })
+    .then( () => {
+        return req.user.increment("points", {by: 1});
     })
     .then(() => {
         res.redirect('/add-price');

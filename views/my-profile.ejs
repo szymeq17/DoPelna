@@ -1,0 +1,38 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="../stylesheets/main.css">
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <div class="username-box">
+            <%= user %>
+        </div>
+        <div class="user-points">
+            <%= points + " " %>
+            <% if (points === 0 || points > 4) { %>
+                punktów
+            <% } else if (points === 1) { %>
+                punkt
+            <% } else { %>
+                punkty
+            <% } %>
+            
+        </div>
+        <% if (prices.length > 0) { %>
+        <h3 class="history-title">Historia</h3>
+            <table class="history">
+                <% for (let price of prices) { %>
+                    <tr>
+                        <td><%= price.date %></td>
+                        <td><%= price.stationName %></td>
+                        <td><%= price.stationStreet + ", " + price.stationPostalCode + " " + price.stationCity %></td>
+                        <td><%= price.fuelType %></td>
+                        <td><%= price.value %></td>
+                    </tr>
+                <% } %>
+            </table>
+        <% } %>
+    </main>
+<%- include('includes/end.ejs') %>

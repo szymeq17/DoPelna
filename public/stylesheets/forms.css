@@ -1,5 +1,6 @@
 .forms-add-price {
-    width: 500px;
+    min-width: 300px;
+    max-width: 500px;
     margin: auto;
     margin-top: 20px;
     border: 2px solid black;
@@ -8,7 +9,8 @@
 }
 
 .forms-add-station {
-    width: 500px;
+    min-width: 300px;
+    max-width: 500px;
     margin: auto;
     margin-top: 20px;
     border: 2px solid black;
