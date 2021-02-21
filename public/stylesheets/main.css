@@ -95,3 +95,93 @@ body {
     color: white;
     font-weight: bold;
 }
+
+.fuel-station-name {
+    margin: 10px;
+    margin-bottom: 0px;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.fuel-station-adress {
+    margin: 10px;
+    margin-top: 0px;
+    width: 300px;
+    background-color: #007900;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+ .fuel-box {
+     margin: 10px;;
+     margin-top: 30px;
+ }
+
+ .fuel-info {
+     width: 200px;
+     display: inline-block;
+ }
+
+ .fuel-type {
+     font-size: 25px;
+     font-weight: bold;
+ }
+
+ .fuel-price {
+     height: 40px;
+     width: 200px;
+     background-color: #007900;
+     border-radius: 15px;
+     text-align: center;
+     line-height: 40px;
+     color: white;
+     font-size: 30px;
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+
+ .fuel-user {
+    height: 25px;
+    width: 95px;
+    background-color: gray;
+    border-radius: 10px;
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    display: inline-block;
+}
+
+ .fuel-date {
+     height: 25px;
+     width: 95px;
+     background-color: gray;
+     border-radius: 10px;
+     font-size: 13px;
+     color: white;
+     text-align: center;
+     line-height: 25px;
+     float: right;
+ }
+
+ .fuel-buttons {
+     display: inline-block;
+ }
+
+ .fuel-btn {
+     display: block;
+     margin: 12px;
+     height: 30px;
+     width: 150px;
+     background-color: black;
+     font-size: 10px;
+     color: white;
+     border: 0px;
+     border-radius: 10px;
+     font-weight: bold;
+ }

@@ -6,8 +6,13 @@
     <%- include('includes/navbar.ejs') %>
 
     <main>
+        
         <div class="auth-box">
+            <% if (error) { %>
+                <div class="error"><%= error %></div>
+                <% } %>
             <form action="/user/login" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
                 <label for="login">Nazwa użytkownika</label>
                 <input type="text" class="main-input" name="login" aria-describedby="emailHelp">

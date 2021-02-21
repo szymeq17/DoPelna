@@ -9,6 +9,7 @@
         <h1 class="main-title">Dodaj stację paliw</h1>
         <div class="forms-add-station">
             <form action="/add-station" method="POST"> 
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
                 <label for="station-name">Nazwa</label>
                 <input class="main-input" type="text" name="name" id="station-name">

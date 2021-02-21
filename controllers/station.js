@@ -1,5 +1,106 @@
 const Station = require('../models/station')
 const { Op } = require("sequelize");
+const Price = require('../models/price');
+
+exports.getStation = (req, res, next) => {
+    let stationId = req.params.id;
+    let station;
+
+    let pb95;
+    let pb98;
+    let on;
+    let lpg;
+
+    Station.findOne({where: {id: stationId}})
+    .then(result => {
+        station = result;
+    })
+    .then(() => {
+       return station.getPrices({
+            where: {
+                fuelType: "PB95"
+            },
+            limit: 1,
+            order: [
+            ["date", "DESC"]
+            ]
+        })
+        .then(price => {
+            pb95 = price[0];
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    })
+    .then(() => {
+        return station.getPrices({
+            where: {
+                fuelType: "PB98"
+            },
+            limit: 1,
+            order: [
+            ["date", "DESC"]
+            ]
+        })
+        .then(price => {
+            pb98 = price[0];
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    })
+    .then(() => {
+        return station.getPrices({
+            where: {
+                fuelType: "ON"
+            },
+            limit: 1,
+            order: [
+            ["date", "DESC"]
+            ]
+        })
+        .then(price => {
+            on = price[0];
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    })
+    .then(() => {
+        return station.getPrices({
+            where: {
+                fuelType: "LPG"
+            },
+            limit: 1,
+            order: [
+            ["date", "DESC"]
+            ]
+        })
+        .then(price => {
+            lpg = price[0];
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    })
+    .then(() => {
+        console.log(pb95);
+        return res.render('station', {
+            pageTitle: "Stacja",
+            path: "station",
+            loggedin: req.session.isLoggedIn,
+            station: station,
+            pb95: pb95,
+            pb98: pb98,
+            on: on,
+            lpg: lpg
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+}
 
 exports.getAddStation = (req, res, next) => {
     res.render('add-station', {
@@ -48,9 +149,5 @@ exports.postAddStation = (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
-    }) 
-}
-
-exports.findStations = (req, res, next, keyword) => {
-    res.json("a");
+    }); 
 }

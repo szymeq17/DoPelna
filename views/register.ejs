@@ -8,6 +8,7 @@
     <main>
         <div class="auth-box">
             <form action="/user/register" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
                 <label for="login">Nazwa użytkownika</label>
                 <input type="text" class="main-input" name="login" aria-describedby="emailHelp">

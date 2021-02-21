@@ -9,6 +9,7 @@
         <h1 class="main-title">Dodaj cenę paliwa</h1>
         <div class="forms-add-price ui-widget">
             <form action="/add-price" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
                 <label for="station">Nazwa stacji paliw</label>
                 <input class="main-input" type="text" id="station" name="name">

@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
+const csrf = require('csurf');
+const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -20,9 +22,11 @@ const errorController = require('./controllers/error');
 const sequelize = require('./utils/database');
 // const { Sequelize } = require('sequelize/types');
 User.hasMany(Price);
+Price.belongsTo(User);
 Station.hasMany(Price);
+Price.belongsTo(Station);
 
-
+const csrfProtection = csrf();
 
 const app = express();
 
@@ -31,7 +35,8 @@ app.use(session({
   store: new SequelizeStore({
     db: sequelize
   }),
-  resave: false
+  resave: false,
+  saveUninitialized: false
 }));
 
 sequelize.sync()
@@ -55,6 +60,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(csrfProtection);
+app.use(flash());
+
 app.use((req, res, next) => {
   if(req.session.user) {
     User.findOne({where: {id: req.session.user.id}})
@@ -70,6 +78,12 @@ app.use((req, res, next) => {
     next();
   }
 });
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+  next();
+})
 
 app.use('/', indexRouter);
 app.use(stationsRouter)

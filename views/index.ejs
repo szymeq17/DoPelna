@@ -13,13 +13,14 @@
             <% for (let entry of recent) {%>
                 <div class="price-item">
                     <p class="type-tag"><%= entry.dataValues.fuelType %></p>
-                    <div class="price-value"><%= entry.dataValues.value %></div>
+                    <div class="price-value"><%= entry.dataValues.value %>zł/l</div>
                     <div class="station-name"><%= entry.dataValues.stationName %></div>
                     <div class="station-adress"><%= entry.dataValues.stationStreet + ", " + entry.dataValues.stationPostalCode + " " + entry.dataValues.stationCity %></div>
                     <div class="user-info"><%= entry.dataValues.stationUser %></div>
                     <div class="time-info"><%= entry.dataValues.date %></div>
                     <button class="price-btn">Zaktualizuj cenę</button>
                     <button class="price-btn">Zgłoś nieprawidłowość</button>  
+                    <button onclick="location.href= '<%= '/station/' + entry.dataValues.stationId %>'" type="button" class="price-btn">Odwiedź stację</button>  
                 </div>
             <% } %>
 

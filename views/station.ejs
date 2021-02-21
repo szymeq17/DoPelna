@@ -1,0 +1,64 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="../stylesheets/main.css">
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main>
+        <div class="fuel-station-name"><%= station.dataValues.name %></div>
+        <div class="fuel-station-adress"><%= station.dataValues.street + ", " + station.dataValues.postalCode + " " + station.dataValues.city %></div>
+        <div class="fuel-box">
+            <div class="fuel-info">
+                <div class="fuel-type">PB95</div>
+                <div class="fuel-price"><%= pb95 ? pb95.dataValues.value + "zł/l" : "N/A" %></div>
+                <div class="fuel-user"><%= pb95 ? pb95.dataValues.stationUser : "N/A" %></div>
+                <div class="fuel-date"><%= pb95 ? pb95.dataValues.date : "N/A" %></div>
+            </div>
+            <div class="fuel-buttons">
+                <button class="fuel-btn">Zaktualizuj cenę</button>
+                <button class="fuel-btn">Zgłoś nieprawidłowość</button>
+            </div>
+        </div>
+
+        <div class="fuel-box">
+            <div class="fuel-info">
+                <div class="fuel-type">PB98</div>
+                <div class="fuel-price"><%= pb98 ? pb98.dataValues.value + "zł/l" : "N/A" %></div>
+                <div class="fuel-user"><%= pb98 ? pb98.dataValues.stationUser : "N/A" %></div>
+                <div class="fuel-date"><%= pb98 ? pb98.dataValues.date : "N/A" %></div>
+            </div>
+            <div class="fuel-buttons">
+                <button class="fuel-btn">Zaktualizuj cenę</button>
+                <button class="fuel-btn">Zgłoś nieprawidłowość</button>
+            </div>
+        </div>
+
+        <div class="fuel-box">
+            <div class="fuel-info">
+                <div class="fuel-type">ON</div>
+                <div class="fuel-price"><%= on ? on.dataValues.value + "zł/l" : "N/A" %></div>
+                <div class="fuel-user"><%= on ? on.dataValues.stationUser : "N/A" %></div>
+                <div class="fuel-date"><%= on ? on.dataValues.date : "N/A" %></div>
+            </div>
+            <div class="fuel-buttons">
+                <button class="fuel-btn">Zaktualizuj cenę</button>
+                <button class="fuel-btn">Zgłoś nieprawidłowość</button>
+            </div>
+        </div>
+
+        <div class="fuel-box">
+            <div class="fuel-info">
+                <div class="fuel-type">LPG</div>
+                <div class="fuel-price"><%= lpg ? lpg.dataValues.value + "zł/l" : "N/A" %></div>
+                <div class="fuel-user"><%= lpg ? lpg.dataValues.stationUser : "N/A" %></div>
+                <div class="fuel-date"><%= lpg ? lpg.dataValues.date : "N/A" %></div>
+            </div>
+            <div class="fuel-buttons">
+                <button class="fuel-btn">Zaktualizuj cenę</button>
+                <button class="fuel-btn">Zgłoś nieprawidłowość</button>
+            </div>
+        </div>
+
+    </main>
+<%- include('includes/end.ejs') %>

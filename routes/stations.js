@@ -2,9 +2,12 @@ var express = require('express');
 const path = require('path');
 var router = express.Router();
 const stationController = require('../controllers/station.js');
+const auth = require('../middleware/is-auth');
 
-router.get('/add-station', stationController.getAddStation);
+router.get('/add-station', auth, stationController.getAddStation);
 
-router.post('/add-station', stationController.postAddStation);
+router.post('/add-station', auth, stationController.postAddStation);
+
+router.get('/station/:id', stationController.getStation);
 
 module.exports = router;
