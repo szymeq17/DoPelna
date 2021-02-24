@@ -151,3 +151,23 @@ exports.postAddStation = (req, res, next) => {
         console.log(err);
     }); 
 }
+
+exports.getfindStations = (req, res, next) => {
+    const stationName = req.query.name;
+    const stationCity = req.query.city;
+    let stations;
+    let prices = []
+
+    Station.findAll({
+        where: {
+            name: stationName
+        },
+
+    })
+    .then(results => {
+        console.log(results[0]);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}

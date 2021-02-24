@@ -14,7 +14,8 @@ exports.getIndex = (req, res, next) => {
             pageTitle: "DoPełna",
             path: "/",
             loggedin: req.session.isLoggedIn,
-            recent: result
+            recent: result,
+            results: []
         });
         if(req.user) {
            console.log("\u001B[32mUżytkownik: " + req.user.nickname + "\u001B[0m");

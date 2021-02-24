@@ -10,4 +10,6 @@ router.post('/add-station', auth, stationController.postAddStation);
 
 router.get('/station/:id', stationController.getStation);
 
+router.get('/find-stations', stationController.getfindStations);
+
 module.exports = router;

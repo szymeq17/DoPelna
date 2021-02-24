@@ -90,3 +90,117 @@
 
 }
 
+.find-station-title {
+    margin:10px;
+}
+
+.find-station {
+    margin: 10px;
+    margin-top: 30px;
+    width: 400px;
+    min-width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px solid #757575;
+    transition: box-shadow 0.4s, border 0.4s;
+}
+
+.find-station:focus {
+    box-shadow: 0 0 6px #007900;
+    border: 2px solid #007900;
+    outline: none;
+}
+
+.filters-title {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.filter {
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px solid #757575;
+    display: block;
+}
+
+.find-btn {
+    border-radius: 20px;
+    width: 100px;
+    height: 35px;
+    border: 0px;
+    background-color: #007900;
+    color: white;
+    font-size: 15px;
+}
+
+.find-btn:hover {
+    background-color: black;
+}
+
+.results {
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.results-name {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 120px;
+    background-color: #007900;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.results-adress {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 300px;
+    background-color: #888888;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.results-fuel-type {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 100px;
+    background-color: #888888;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.results-fuel-type-badge {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    background-color: #007900;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    float: left;
+}
+
+.results-btn {
+    height: 40px;
+    border: 0px;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.results-cell {
+    padding-right: 5px;
+}

@@ -7,7 +7,60 @@
     <%- include('includes/navbar.ejs') %>
 
     <main>
-        <% if (recent.length > 0) { %>
+        <div class="search">
+            <form action="/find-stations" method="GET">
+            <h2 class="find-station-title">Znajdź stację</h2>
+            <input class="find-station" name="name" placeholder="Nazwa stacji" type="text">
+            <button class="find-btn" type="submit">Szukaj</button>
+            <p class="filters-title">Filtry</p>
+            <input class="filter" placeholder="Miasto" name="city" type="text">
+        </form>
+        </div>
+
+        <% if (results.length > 0) { %>
+        <h2>Wyniki wyszukiwania</h2>
+        <div class="results">
+            <table class="results-table">
+                <% for (let price of results) { %>
+                <tr>
+                    <td class="results-cell">
+                        <div class="results-name"><%= price.dataValues.stationName %></div>
+                    </td>
+                    <td class="results-cell">
+                        <div class="results-adress"><%= price.dataValues.stationStreet  + ", " + price.dataValues.stationPostalCode + " " + price.dataValues.stationCity %></div>
+                    </td>
+                    <td class="results-cell">
+                        <div class="results-fuel-type">
+                        <div class="results-fuel-type-badge">PB95</div>
+                        <%= price.dataValues.stationName %>
+                        </div>
+                    </td>
+                    <td class="results-cell">
+                        <div class="results-fuel-type">
+                        <div class="results-fuel-type-badge">PB98</div>
+                        4.19zł/l
+                        </div>
+                    </td>
+                    <td class="results-cell">
+                        <div class="results-fuel-type">
+                        <div class="results-fuel-type-badge">ON</div>
+                        4.19zł/l
+                        </div>
+                    </td>
+                    <td class="results-cell">
+                        <div class="results-fuel-type">
+                        <div class="results-fuel-type-badge">LPG</div>
+                        4.19zł/l
+                        </div>
+                    </td>
+                    <td class="results-cell"><button class="results-btn">Odwiedź stację</button></td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <% } %>
+
+        <!-- <% if (recent.length > 0) { %>
             <h1 class="last-title">Ostatnio dodane</h1>
             <div class="prices-container">
             <% for (let entry of recent) {%>
@@ -22,7 +75,7 @@
                     <button class="price-btn">Zgłoś nieprawidłowość</button>  
                     <button onclick="location.href= '<%= '/station/' + entry.dataValues.stationId %>'" type="button" class="price-btn">Odwiedź stację</button>  
                 </div>
-            <% } %>
+            <% } %> -->
 
                 
             </div>
