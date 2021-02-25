@@ -18,51 +18,51 @@
         </div>
 
         <% if (results.length > 0) { %>
-        <h2>Wyniki wyszukiwania</h2>
         <div class="results">
+            <h2>Wyniki wyszukiwania</h2>
             <table class="results-table">
-                <% for (let price of results) { %>
+                <% for (let i=0; i<results.length; i++) { %>
                 <tr>
                     <td class="results-cell">
-                        <div class="results-name"><%= price.dataValues.stationName %></div>
+                        <div class="results-name"><%= results[i].dataValues.name %></div>
                     </td>
                     <td class="results-cell">
-                        <div class="results-adress"><%= price.dataValues.stationStreet  + ", " + price.dataValues.stationPostalCode + " " + price.dataValues.stationCity %></div>
+                        <div class="results-adress"><%= results[i].dataValues.street  + ", " + results[i].dataValues.postalCode + " " + results[i].dataValues.city %></div>
                     </td>
                     <td class="results-cell">
                         <div class="results-fuel-type">
                         <div class="results-fuel-type-badge">PB95</div>
-                        <%= price.dataValues.stationName %>
+                        <%= prices[0][i] === undefined ? "N/A" : prices[0][i].dataValues.value + "zł/l" %>
                         </div>
                     </td>
                     <td class="results-cell">
                         <div class="results-fuel-type">
                         <div class="results-fuel-type-badge">PB98</div>
-                        4.19zł/l
+                        <%= prices[1][i] === undefined ? "N/A" : prices[1][i].dataValues.value + "zł/l" %>
                         </div>
                     </td>
                     <td class="results-cell">
                         <div class="results-fuel-type">
                         <div class="results-fuel-type-badge">ON</div>
-                        4.19zł/l
+                        <%= prices[2][i] === undefined ? "N/A" : prices[2][i].dataValues.value + "zł/l" %>
                         </div>
                     </td>
                     <td class="results-cell">
                         <div class="results-fuel-type">
                         <div class="results-fuel-type-badge">LPG</div>
-                        4.19zł/l
+                        <%= prices[3][i] === undefined ? "N/A" : prices[3][i].dataValues.value + "zł/l" %>
                         </div>
                     </td>
-                    <td class="results-cell"><button class="results-btn">Odwiedź stację</button></td>
+                    <td class="results-cell"><button onclick="location.href= '<%= '/station/' + results[i].dataValues.id %>'" class="results-btn">Odwiedź stację</button></td>
                 </tr>
                 <% } %>
             </table>
         </div>
         <% } %>
 
-        <!-- <% if (recent.length > 0) { %>
-            <h1 class="last-title">Ostatnio dodane</h1>
+        <% if (recent.length > 0) { %>
             <div class="prices-container">
+            <h1 class="last-title">Ostatnio dodane</h1>
             <% for (let entry of recent) {%>
                 <div class="price-item">
                     <p class="type-tag"><%= entry.dataValues.fuelType %></p>
@@ -75,7 +75,7 @@
                     <button class="price-btn">Zgłoś nieprawidłowość</button>  
                     <button onclick="location.href= '<%= '/station/' + entry.dataValues.stationId %>'" type="button" class="price-btn">Odwiedź stację</button>  
                 </div>
-            <% } %> -->
+            <% } %>
 
                 
             </div>

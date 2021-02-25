@@ -156,16 +156,112 @@ exports.getfindStations = (req, res, next) => {
     const stationName = req.query.name;
     const stationCity = req.query.city;
     let stations;
-    let prices = []
+    let prices = [[], [], [], []];
 
     Station.findAll({
         where: {
-            name: stationName
+            name: {
+                [Op.regexp]: "(?i)" + stationName
+            },
+            city: {
+                [Op.regexp]: "(?i)" + stationCity
+            }
         },
+        include: {
+            model: Price,
+            where: {
+                fuelType: "pb95"
+            },
+            limit: 1,
+            order: [
+            ["date", "DESC"]
+            ]
+        }
 
     })
     .then(results => {
-        console.log(results[0]);
+        stations = results;
+        for (let i=0; i<results.length; i++) {
+            prices[0].push(results[i].prices === undefined ? null : results[i].prices[0]);
+        }
+    })
+    .then(() => {
+        return Station.findAll({
+            where: {
+                name: stationName
+            },
+            include: {
+                model: Price,
+                where: {
+                    fuelType: "pb98"
+                },
+                limit: 1,
+                order: [
+                ["date", "DESC"]
+                ]
+            }
+        });
+    })
+    .then(results => {
+        for (let i=0; i<results.length; i++) {
+            prices[1].push(results[i].prices === undefined ? null : results[i].prices[0]);
+        }
+    })
+    .then(() => {
+        return Station.findAll({
+            where: {
+                name: stationName
+            },
+            include: {
+                model: Price,
+                where: {
+                    fuelType: "on"
+                },
+                limit: 1,
+                order: [
+                ["date", "DESC"]
+                ]
+            }
+        });
+    })
+    .then(results => {
+        for (let i=0; i<results.length; i++) {
+            prices[2].push(results[i].prices === undefined ? null : results[i].prices[0]);
+        }
+    })
+    .then(() => {
+        return Station.findAll({
+            where: {
+                name: stationName
+            },
+            include: {
+                model: Price,
+                where: {
+                    fuelType: "lpg"
+                },
+                limit: 1,
+                order: [
+                ["date", "DESC"]
+                ]
+            }
+        });
+    })
+    .then(results => {
+        for (let i=0; i<results.length; i++) {
+            prices[3].push(results[i].prices === undefined ? null : results[i].prices[0]);
+        }
+    })
+    .then(() => {
+        console.log(prices);
+        console.log(stations);
+        res.render('index', {
+            pageTitle: "DoPełna",
+            path: "/",
+            loggedin: req.session.isLoggedIn,
+            recent: [],
+            results: stations,
+            prices: prices
+        });
     })
     .catch(err => {
         console.log(err);
